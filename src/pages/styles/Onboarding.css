@@ -1,0 +1,105 @@
+.onboarding {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  background-color: #fdf0e2;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 3.5rem;
+  padding-bottom: 5rem;
+}
+
+.onboarding__top {
+  text-align: left;
+  min-height: 219px;   /* 3 lines heading (3 × 53px line-height) + 8px margin + 2-line subtitle */
+  flex-shrink: 0;       /* NEW — don't let this collapse/grow based on content */
+}
+
+.onboarding__heading {
+  margin: 0;
+  width: 100%;
+  max-width: 340px;   /* was 280px — this is what caused "Bold Flavors." to wrap */
+  font-family: var(--font-display, inherit);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 53px;
+  letter-spacing: -0.01em;
+  color: #0e0e10;
+}
+
+.onboarding__heading-line {
+  display: block;
+}
+
+.onboarding__heading-accent {
+  display: block;
+  color: #2f9fef;
+}
+
+.onboarding__subtitle {
+  margin-top: 0.75rem;
+  font-family: var(--font-sans, inherit);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000;
+}
+
+.onboarding__image-wrap {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.onboarding__image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;   /* was cover — this was cropping the image */
+}
+
+.onboarding__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  flex-shrink: 0;        /* NEW — footer height stays fixed no matter what */
+}
+
+.onboarding__skip {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(14, 14, 16, 0.55);
+  cursor: pointer;
+}
+
+.onboarding__next {
+  display: flex;
+  height: 3rem;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 9999px;
+  background-color: #0e0e10;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.onboarding__next:active {
+  transform: scale(0.95);
+}
+
+.onboarding__subtitle-line {
+  display: block;
+}

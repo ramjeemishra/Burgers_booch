@@ -1,0 +1,141 @@
+.splash {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background-color: #0a0a0a;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 3.5rem;
+  text-align: center;
+}
+
+.splash__glow {
+  pointer-events: none;
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(24px);
+  z-index: 0;
+}
+
+.splash__glow--left {
+  left: -2.5rem;
+  top: 4rem;
+  height: 8rem;
+  width: 8rem;
+  background-color: rgba(93, 173, 226, 0.1);
+}
+
+.splash__glow--right {
+  right: -1.5rem;
+  bottom: 10rem;
+  height: 10rem;
+  width: 10rem;
+  background-color: rgba(255, 140, 66, 0.1);
+}
+
+.splash__logo-wrap {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splash__logo {
+  height: 7.5rem;
+  width: 7.5rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.splash__ray {
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  background-color: rgba(93, 173, 226, 0.6);
+}
+
+.splash__ray--left {
+  left: -2rem;
+  transform-origin: left center;
+}
+.splash__ray--right {
+  right: -2rem;
+  transform-origin: right center;
+}
+
+.splash__ray--left.splash__ray--top {
+  width: 1.5rem;
+  transform: translateY(-1.1rem) rotate(20deg);
+}
+.splash__ray--left.splash__ray--mid {
+  left: -2.3rem;
+  width: 1.75rem;
+  transform: translateY(0) rotate(1deg);
+}
+.splash__ray--left.splash__ray--bottom {
+  width: 1.5rem;
+  transform: translateY(1.1rem) rotate(-20deg);
+}
+
+.splash__ray--right.splash__ray--top {
+  width: 1.5rem;
+  transform: translateY(-1.1rem) rotate(-20deg);
+}
+.splash__ray--right.splash__ray--mid {
+  right: -2.3rem;
+  width: 1.75rem;
+  transform: translateY(0) rotate(-1deg);
+}
+.splash__ray--right.splash__ray--bottom {
+  width: 1.5rem;
+  transform: translateY(1.1rem) rotate(15deg);
+}
+
+.splash__title {
+  position: relative;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.75rem;
+  width: 100%;
+  max-width: 300px;
+  font-family: var(--font-display, inherit);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 46px;
+  color: #ffffff;
+}
+
+.splash__title-accent {
+  color: #5dade2;
+}
+
+.splash__subtitle {
+  position: relative;
+  z-index: 2;
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.splash__subtitle-accent {
+  color: #5dade2;
+}
+
+.splash__burger {
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: bottom center;
+}
