@@ -3,7 +3,7 @@ import Splash from './pages/Splash'
 import Onboarding from './pages/Onboarding'
 import SelectOrderType from './pages/SelectOrderType'
 import LocationPermission from './pages/LocationPermission'
-
+import SelectLocation from './pages/SelectLocation'
 
 function Placeholder({ name }: { name: string }) {
   return (
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/select-order-type" element={<SelectOrderType />} />
         <Route path="/location-permission" element={<LocationPermission />} />
-        <Route path="/select-location" element={<Placeholder name="Select Location" />} />
+        <Route path="/select-location" element={<SelectLocation />} />
         <Route path="/delivery-available" element={<Placeholder name="Delivery Available" />} />
         <Route path="/sign-in" element={<Placeholder name="Sign In" />} />
         <Route path="/enter-mobile" element={<Placeholder name="Enter Mobile Number" />} />

@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import splashLogo from '../assets/splash/logo.png'
+import splashBurger from '../assets/splash/burger.png'
 import './styles/Splash.css'
 
 export default function Splash() {
@@ -21,7 +23,7 @@ export default function Splash() {
         <span className="splash__ray splash__ray--left splash__ray--bottom" />
 
         <img
-          src="/src/assets/splash/logo.png"
+          src={splashLogo}
           alt="Burgers & Booch"
           className="splash__logo"
         />
@@ -41,7 +43,7 @@ export default function Splash() {
       </p>
 
       <img
-        src="/src/assets/splash/burger.png"
+        src={splashBurger}
         alt=""
         className="splash__burger"
       />

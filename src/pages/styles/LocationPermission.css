@@ -12,16 +12,6 @@
   padding: 3.5rem 1rem 2.5rem;
 }
 
-.location-permission__content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2.75rem;
-}
-
 .location-permission__back {
   position: relative;
   z-index: 5;
@@ -42,9 +32,9 @@
 .location-permission__food-top {
   position: absolute;
   z-index: 3;
-  top: 0;
-  right: 0;
-  width: 135px;
+  top: -120px;
+  right: -60px;
+  width: 165px;
   height: auto;
   pointer-events: none;
 }
@@ -52,11 +42,21 @@
 .location-permission__food-bottom {
   position: absolute;
   z-index: 3;
-  bottom: 0;
-  left: 0;
-  width: 135px;
+  bottom: -8px;
+  left: -18px;
+  width: 165px;
   height: auto;
   pointer-events: none;
+}
+
+.location-permission__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.75rem;
 }
 
 .location-permission__heading {
@@ -65,22 +65,24 @@
   align-items: center;
   margin: 0;
   font-family: var(--font-display, inherit);
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 700;
-  line-height: 35px;
+  line-height: 36px;
   letter-spacing: -0.02em;
   color: #000000;
 }
 
-.location-permission__leaf-title {
-  position: absolute;
-  left: 1.75rem;
-  top: 1.25rem;
+.location-permission__heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
 }
 
-.location-permission__leaf-title img {
-  width: 30px;
+.location-permission__heading-row img {
+  width: 32px;
   height: auto;
+  flex-shrink: 0;
 }
 
 .location-permission__heading-accent {
@@ -102,31 +104,36 @@
 }
 
 .location-permission__map {
-  width: 100%;
+  position: relative;
+  width: calc(100% - 2rem);
   margin-top: 2rem;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 18px;
 }
 
-.location-permission__map img {
+.location-permission__map-image {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 18px;
   object-fit: contain;
 }
 
 .location-permission__leaf-map {
   position: absolute;
-  top: 355px;
-  right: 1.5rem;
+  top: -28px;
+  right: -2px;
+  z-index: 20;
+  display: block;
   width: 38px;
   height: auto;
-  transform: rotate(-10deg);
+  transform: rotate(-8deg);
+  pointer-events: none;
 }
 
 .location-permission__allow {
   display: flex;
-  width: 100%;
+  width: calc(100% - 2rem);
   height: 60px;
   align-items: center;
   justify-content: center;

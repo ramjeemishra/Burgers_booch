@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import slide1 from '../assets/onboarding/slide-1.png'
+import slide2 from '../assets/onboarding/slide-2.png'
+import slide3 from '../assets/onboarding/slide-3.png'
 import './styles/Onboarding.css'
 
 const slides = [
@@ -8,19 +11,19 @@ const slides = [
     heading: ['Crafted', 'Burgers.'],
     accent: 'Real Good.',
     subtitle: ['Handcrafted with finest ingredients and', 'bold flavors.'],
-    image: '/src/assets/onboarding/slide-1.png',
+    image: slide1,
   },
   {
     heading: ['Fresh', 'Ingredients.'],
     accent: 'Bold Flavors.',
     subtitle: ['Every bite is made with quality you can', 'taste.'],
-    image: '/src/assets/onboarding/slide-2.png',
+    image: slide2,
   },
   {
     heading: ['Delivered'],
     accent: 'Hot & Fast.',
     subtitle: ['Fast deliver at your', 'doorsteps, always.'],
-    image: '/src/assets/onboarding/slide-3.png',
+    image: slide3,
   },
 ]
 

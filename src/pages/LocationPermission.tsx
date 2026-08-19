@@ -38,6 +38,7 @@ export default function LocationPermission() {
       />
 
       <button
+        type="button"
         onClick={() => navigate(-1)}
         className="location-permission__back"
         aria-label="Go back"
@@ -47,10 +48,11 @@ export default function LocationPermission() {
 
       <div className="location-permission__content">
         <h1 className="location-permission__heading">
-          <span className="location-permission__leaf-title">
+          <span className="location-permission__heading-row">
             <img src={leaf} alt="" />
+            <span>Allow Location</span>
           </span>
-          <span>Allow Location</span>
+
           <span className="location-permission__heading-accent">
             Access
           </span>
@@ -63,14 +65,18 @@ export default function LocationPermission() {
         </p>
 
         <div className="location-permission__map">
-          <img src={locationMap} alt="Location map" />
-        </div>
+          <img
+            src={locationMap}
+            alt="Location map"
+            className="location-permission__map-image"
+          />
 
-        <img
-          src={leaf}
-          alt=""
-          className="location-permission__leaf-map"
-        />
+          <img
+            src={leaf}
+            alt=""
+            className="location-permission__leaf-map"
+          />
+        </div>
 
         <button
           type="button"
