@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import AddMobileNumber from './AddMobileNumber'
 import './styles/SignIn.css'
 
 type SignInProps = {
   onClose: () => void
 }
 
+type Step = 'options' | 'phone'
+
 export default function SignIn({ onClose }: SignInProps) {
+  const [step, setStep] = useState<Step>('options')
   const [acceptedTerms, setAcceptedTerms] = useState(false)
 
   const handleTruecaller = () => {
@@ -24,7 +28,11 @@ export default function SignIn({ onClose }: SignInProps) {
   const handlePhoneNumber = () => {
     if (!acceptedTerms) return
 
-    console.log('Continue with Phone Number')
+    setStep('phone')
+  }
+
+  if (step === 'phone') {
+    return <AddMobileNumber onClose={onClose} onBack={() => setStep('options')} />
   }
 
   return (

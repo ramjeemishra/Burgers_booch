@@ -1,0 +1,215 @@
+.add-mobile-overlay {
+  position: fixed;
+  z-index: 1001;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.add-mobile-sheet {
+  width: min(100%, 430px);
+  box-sizing: border-box;
+  padding: 14px 17px 15px;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  color: #0e0e10;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+  animation: add-mobile-slide-up 0.22s ease-out;
+}
+
+/* Header */
+
+.add-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-mobile-header h2 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.add-mobile-close {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #777;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Description */
+
+.add-mobile-description {
+  margin: 8px 0 18px;
+  color: #8b8b8b;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+/* Phone */
+
+.add-mobile-phone {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  box-sizing: border-box;
+  align-items: center;
+  border: 1px solid #dedede;
+  border-radius: 9px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.add-mobile-country-code {
+  display: flex;
+  width: 43px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 43px;
+  color: #111;
+  font-size: 12px;
+  font-weight: 500;
+  border-right: 1px solid #eeeeee;
+}
+
+.add-mobile-phone input {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  padding: 0 12px;
+  color: #111;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.add-mobile-phone input::placeholder {
+  color: #999;
+}
+
+/* Terms */
+
+.add-mobile-terms {
+  display: flex;
+  min-height: 40px;
+  box-sizing: border-box;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  border: 1px solid #d5e7eb;
+  border-radius: 5px;
+  background: #eafbff;
+  padding: 7px 8px;
+  color: #111;
+  font-size: 10px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+.add-mobile-terms input {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: #48b6ff;
+}
+
+.add-mobile-terms a {
+  color: #111;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Send OTP */
+
+.add-mobile-send-otp {
+  display: flex;
+  width: 100%;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  border: 0;
+  border-radius: 7px;
+  background: #48b6ff;
+  color: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-mobile-send-otp:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Change login method */
+
+.add-mobile-change-method {
+  display: block;
+  width: 100%;
+  margin-top: 11px;
+  border: 0;
+  background: transparent;
+  color: #333;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+@keyframes add-mobile-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 430px) {
+  .add-mobile-sheet {
+    padding-right: 17px;
+    padding-left: 17px;
+  }
+}
+
+@media (max-height: 620px) {
+  .add-mobile-sheet {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .add-mobile-description {
+    margin-bottom: 14px;
+  }
+
+  .add-mobile-terms {
+    margin-top: 8px;
+  }
+
+  .add-mobile-send-otp {
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,405 @@
+.order-status-page {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: #e9e9e9;
+  color: #111;
+  font-family: inherit;
+}
+
+.order-status-container {
+  width: min(100%, 430px);
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 18px 14px 30px;
+  background: #fff;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.order-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.order-status-logo {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #48b6ff;
+  color: #fff;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 7px;
+  line-height: 7px;
+  text-align: center;
+}
+
+.order-status-logo span {
+  display: block;
+}
+
+.order-status-profile {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: #eafbff;
+  color: #48b6ff;
+  padding: 0;
+}
+
+/* =========================================
+   DELIVERY IMAGE
+========================================= */
+
+.delivery-illustration {
+  display: flex;
+  height: 171px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 9px;
+  overflow: hidden;
+}
+
+.delivery-illustration img {
+  display: block;
+  width: 178px;
+  height: 171px;
+  object-fit: contain;
+}
+
+/* =========================================
+   PREPARING ORDER
+========================================= */
+
+.preparing-order-card {
+  box-sizing: border-box;
+  margin-top: 3px;
+  padding: 9px 9px 10px;
+  border: 1px solid #dedede;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.preparing-order-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preparing-icon {
+  display: flex;
+  width: 29px;
+  height: 29px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 29px;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  color: #48b6ff;
+}
+
+.preparing-content {
+  min-width: 0;
+}
+
+.preparing-content h1 {
+  margin: 0;
+  color: #111;
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 600;
+}
+
+.preparing-content p {
+  margin: 3px 0 0;
+  color: #858585;
+  font-size: 8px;
+  line-height: 11px;
+}
+
+.preparing-divider {
+  height: 1px;
+  margin: 9px 0 8px;
+  background: #48b6ff;
+}
+
+.estimated-time-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.estimated-time {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.estimated-time span {
+  color: #777;
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.estimated-time strong {
+  color: #48b6ff;
+  font-size: 9px;
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.view-order-details {
+  border: 0;
+  background: transparent;
+  color: #48b6ff;
+  padding: 0;
+  font-family: inherit;
+  font-size: 7px;
+  line-height: 10px;
+  cursor: pointer;
+}
+
+/* =========================================
+   DELIVERY PARTNER
+========================================= */
+
+.delivery-partner-card {
+  display: flex;
+  min-height: 65px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 7px 9px;
+  border: 1px solid #dedede;
+  border-radius: 7px;
+  background: #fff;
+}
+
+.delivery-partner-info {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+}
+
+.delivery-partner-image {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.delivery-partner-details {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.delivery-partner-details h2 {
+  margin: 0;
+  color: #111;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 600;
+}
+
+.delivery-partner-details p {
+  margin: 0;
+  color: #777;
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.delivery-partner-details span {
+  color: #777;
+  font-size: 8px;
+  line-height: 10px;
+}
+
+.delivery-partner-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.partner-action-button {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  background: #fff;
+  color: #48b6ff;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* =========================================
+   ORDER DETAILS
+========================================= */
+
+.status-order-details {
+  margin-top: 17px;
+}
+
+.status-order-details > h2 {
+  margin: 0 0 12px;
+  color: #111;
+  font-size: 10px;
+  line-height: 13px;
+  font-weight: 600;
+}
+
+.status-order-card {
+  box-sizing: border-box;
+  padding: 9px;
+  border: 1px solid #dedede;
+  border-radius: 7px;
+  background: #fff;
+}
+
+/* =========================================
+   PRODUCT
+========================================= */
+
+.status-product-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.status-product-image {
+  display: flex;
+  width: 30px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #f5eee7;
+}
+
+.status-product-bag {
+  display: flex;
+  width: 23px;
+  height: 27px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: #e7c7a4;
+}
+
+.status-product-bag span {
+  font-size: 10px;
+}
+
+.status-product-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.status-product-info strong {
+  color: #111;
+  font-size: 9px;
+  line-height: 11px;
+  font-weight: 600;
+}
+
+.status-product-info span {
+  overflow: hidden;
+  color: #888;
+  font-size: 8px;
+  line-height: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================
+   DETAIL ROWS
+========================================= */
+
+.status-detail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 11px;
+}
+
+.status-detail-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #777;
+  font-size: 8px;
+  line-height: 11px;
+}
+
+.status-detail-label svg {
+  flex: 0 0 auto;
+  color: #48b6ff;
+}
+
+.status-delivery-time {
+  color: #48b6ff;
+  font-size: 8px;
+  line-height: 11px;
+  font-weight: 500;
+}
+
+.status-address {
+  color: #888;
+  font-size: 8px;
+  line-height: 11px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 430px) {
+  .order-status-container {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+}
+
+@media (max-height: 700px) {
+  .delivery-illustration {
+    height: 145px;
+  }
+
+  .delivery-illustration img {
+    width: 155px;
+    height: 145px;
+  }
+
+  .delivery-partner-card {
+    margin-top: 10px;
+  }
+
+  .status-order-details {
+    margin-top: 13px;
+  }
+}
