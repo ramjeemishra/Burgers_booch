@@ -42,28 +42,14 @@ export default function App() {
 
       <Routes>
 
-        {/* =========================================
-            SPLASH
-        ========================================= */}
-
         <Route
           path="/"
           element={<Splash />}
         />
-
-        {/* =========================================
-            ONBOARDING
-        ========================================= */}
-
         <Route
           path="/onboarding"
           element={<Onboarding />}
         />
-
-        {/* =========================================
-            SELECT ORDER TYPE
-        ========================================= */}
-
         <Route
           path="/select-order-type"
           element={<SelectOrderType />}
