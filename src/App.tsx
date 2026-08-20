@@ -27,13 +27,13 @@ export default function App() {
         <Route path="/location-permission" element={<LocationPermission />} />
         <Route path="/select-location" element={<SelectLocation />} />
         <Route path="/delivery-available" element={<DeliveryAvailable />} />
-        <Route path="/sign-in" element={<Placeholder name="Sign In" />} />
+        <Route path="/sign-in" element={<Placeholder name="signin" />} />
         <Route path="/enter-mobile" element={<Placeholder name="Enter Mobile Number" />} />
         <Route path="/otp" element={<Placeholder name="OTP Verification" />} />
         <Route path="/personal-details" element={<Placeholder name="Insert Personal Details" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/menu/:categoryId" element={<Burgers />} />
-        <Route path="/cart" element={<Placeholder name="Cart Screen" />} />
+        <Route path="/cart" element={<Placeholder name="cart" />} />
         <Route path="/payment" element={<Placeholder name="Payment Selection" />} />
         <Route path="/payment-success" element={<Placeholder name="Payment Successful" />} />
         <Route path="/order-status" element={<Placeholder name="Order Status" />} />
