@@ -3,6 +3,7 @@ import { UserRound, Check, Star } from 'lucide-react'
 import './styles/Feedback.css'
 
 import deliveredImage from '../assets/order-type/delivered.png'
+import splashLogo from '../assets/splash/logo.png'
 
 export default function Feedback() {
   const [rating, setRating] = useState(0)
@@ -12,15 +13,14 @@ export default function Feedback() {
     <main className="feedback-page">
       <div className="feedback-container">
 
-        {/* =========================================
-            HEADER
-        ========================================= */}
-
         <header className="feedback-header">
 
-          <div className="feedback-logo">
-            <span>Burgers</span>
-            <span>&amp; Booch</span>
+          <div className="feedback-logo-wrap">
+            <img
+              src={splashLogo}
+              alt="Burgers & Booch"
+              className="feedback-logo"
+            />
           </div>
 
           <button
@@ -94,11 +94,10 @@ export default function Feedback() {
               <button
                 key={star}
                 type="button"
-                className={`feedback-star ${
-                  rating >= star
+                className={`feedback-star ${rating >= star
                     ? 'feedback-star--active'
                     : ''
-                }`}
+                  }`}
                 onClick={() => setRating(star)}
                 aria-label={`Rate ${star} stars`}
               >

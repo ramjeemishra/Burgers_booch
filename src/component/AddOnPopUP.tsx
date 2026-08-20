@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { X } from 'lucide-react'
 import './styles/AddOnPopUP.css'
 
@@ -159,6 +160,8 @@ const desserts: AddOnItem[] = [
 export default function AddOnPopup({
   onClose,
 }: AddOnPopupProps) {
+  const navigate = useNavigate()
+
   const [selectedItems, setSelectedItems] =
     useState<string[]>([])
 
@@ -201,11 +204,6 @@ export default function AddOnPopup({
   const total =
     addonsTotal + comboPrice
 
-  /*
-   * ADD TO CART
-   *
-   * This is now a FULL PAGE navigation.
-   */
   const handleAddToCart = () => {
     console.log('Add to cart:', {
       comboSelected,
@@ -213,7 +211,7 @@ export default function AddOnPopup({
       total,
     })
 
-    window.location.href = '/cart'
+    navigate('/cart')
   }
 
   const renderSection = (
@@ -277,7 +275,6 @@ export default function AddOnPopup({
     <div className="addon-overlay">
       <div className="addon-popup">
 
-        {/* Header */}
         <header className="addon-header">
 
           <div className="addon-header-product">
@@ -328,7 +325,6 @@ export default function AddOnPopup({
 
         </header>
 
-        {/* Combo */}
         <section className="addon-combo">
 
           <div>
@@ -383,7 +379,6 @@ export default function AddOnPopup({
 
         <div className="addon-bottom-space" />
 
-        {/* Bottom bar */}
         <div className="addon-cart-bar">
 
           <div className="addon-cart-summary">

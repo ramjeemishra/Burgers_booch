@@ -237,10 +237,12 @@
 
 .burgers__image-wrap {
   width: 100%;
-  aspect-ratio: 1.28 / 1;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   padding: 3px;
   box-sizing: border-box;
+  background: var(--burgers-cream);
+  border-radius: 5px;
 }
 
 .burgers__image-wrap img {
@@ -248,7 +250,7 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .burgers__card-body {

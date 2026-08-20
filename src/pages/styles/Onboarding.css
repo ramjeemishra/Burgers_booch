@@ -1,28 +1,30 @@
 .onboarding {
   display: flex;
-  min-height: 100dvh;
+  height: 100dvh;              /* was min-height — hard lock, no growth beyond viewport */
+  max-height: 100dvh;
+  overflow: hidden;            /* NEW — guarantees no scroll no matter what */
   flex-direction: column;
   background-color: #fdf0e2;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 3.5rem;
-  padding-bottom: 5rem;
+  padding-left: clamp(1.25rem, 6vw, 2rem);
+  padding-right: clamp(1.25rem, 6vw, 2rem);
+  padding-top: clamp(1.5rem, 6vh, 3.5rem);
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+  box-sizing: border-box;
 }
 
 .onboarding__top {
   text-align: left;
-  min-height: 219px;   /* 3 lines heading (3 × 53px line-height) + 8px margin + 2-line subtitle */
-  flex-shrink: 0;       /* NEW — don't let this collapse/grow based on content */
+  flex-shrink: 0;
 }
 
 .onboarding__heading {
   margin: 0;
   width: 100%;
-  max-width: 340px;   /* was 280px — this is what caused "Bold Flavors." to wrap */
+  max-width: 340px;
   font-family: var(--font-display, inherit);
-  font-size: 48px;
+  font-size: clamp(30px, 8.5vh, 48px);   /* scales down on short screens */
   font-weight: 700;
-  line-height: 53px;
+  line-height: 1.1;
   letter-spacing: -0.01em;
   color: #0e0e10;
 }
@@ -37,18 +39,19 @@
 }
 
 .onboarding__subtitle {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   font-family: var(--font-sans, inherit);
-  font-size: 15px;
+  font-size: clamp(13px, 3.4vh, 15px);
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5;
   color: #000000;
 }
 
 .onboarding__image-wrap {
   display: flex;
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  max-height: 45vh;            /* NEW — prevents the image from claiming too much and pushing footer/text off-screen */
   align-items: center;
   justify-content: center;
   margin-top: 0.5rem;
@@ -60,7 +63,7 @@
   max-height: 100%;
   width: auto;
   height: auto;
-  object-fit: contain;   /* was cover — this was cropping the image */
+  object-fit: contain;
 }
 
 .onboarding__footer {
@@ -68,8 +71,8 @@
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
-  padding-top: 1.5rem;
-  flex-shrink: 0;        /* NEW — footer height stays fixed no matter what */
+  padding-top: clamp(0.75rem, 3vh, 1.5rem);
+  flex-shrink: 0;
 }
 
 .onboarding__skip {
@@ -84,8 +87,8 @@
 
 .onboarding__next {
   display: flex;
-  height: 3rem;
-  width: 3rem;
+  height: clamp(2.5rem, 6.5vh, 3rem);
+  width: clamp(2.5rem, 6.5vh, 3rem);
   align-items: center;
   justify-content: center;
   border: none;

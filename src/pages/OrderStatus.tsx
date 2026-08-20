@@ -9,7 +9,7 @@ import {
   MessageSquare,
 } from 'lucide-react'
 import './styles/OrderStatus.css'
-
+import splashLogo from '../assets/splash/logo.png'
 import deliveryImage from '../assets/order-type/delivery.png'
 import customerImage from '../assets/home/customer-1.jpg'
 
@@ -56,9 +56,12 @@ export default function OrderStatus() {
 
         <header className="order-status-header">
 
-          <div className="order-status-logo">
-            <span>Burgers</span>
-            <span>&amp; Booch</span>
+          <div className="feedback-logo-wrap">
+            <img
+              src={splashLogo}
+              alt="Burgers & Booch"
+              className="feedback-logo"
+            />
           </div>
 
           <button

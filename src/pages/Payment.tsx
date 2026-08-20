@@ -7,6 +7,7 @@ import {
   Smartphone,
   ShieldCheck,
 } from 'lucide-react'
+import splashLogo from '../assets/splash/logo.png'
 import './styles/Payment.css'
 
 type PaymentMethod =
@@ -52,10 +53,12 @@ export default function Payment() {
         ========================================= */}
 
         <header className="payment-header">
-
-          <div className="payment-logo">
-            <span>Burgers</span>
-            <span>&amp; Booch</span>
+          <div className="feedback-logo-wrap">
+            <img
+              src={splashLogo}
+              alt="Burgers & Booch"
+              className="feedback-logo"
+            />
           </div>
 
           <button
@@ -168,11 +171,10 @@ export default function Payment() {
 
         <button
           type="button"
-          className={`payment-method-card ${
-            paymentMethod === 'upi'
+          className={`payment-method-card ${paymentMethod === 'upi'
               ? 'payment-method-card--selected'
               : ''
-          }`}
+            }`}
           onClick={() => setPaymentMethod('upi')}
         >
 
@@ -226,11 +228,10 @@ export default function Payment() {
           </div>
 
           <span
-            className={`payment-radio ${
-              paymentMethod === 'upi'
+            className={`payment-radio ${paymentMethod === 'upi'
                 ? 'payment-radio--selected'
                 : ''
-            }`}
+              }`}
           >
             {paymentMethod === 'upi' && (
               <span />
@@ -245,11 +246,10 @@ export default function Payment() {
 
         <button
           type="button"
-          className={`payment-method-card ${
-            paymentMethod === 'card'
+          className={`payment-method-card ${paymentMethod === 'card'
               ? 'payment-method-card--selected'
               : ''
-          }`}
+            }`}
           onClick={() => setPaymentMethod('card')}
         >
 
@@ -279,11 +279,10 @@ export default function Payment() {
           </div>
 
           <span
-            className={`payment-radio ${
-              paymentMethod === 'card'
+            className={`payment-radio ${paymentMethod === 'card'
                 ? 'payment-radio--selected'
                 : ''
-            }`}
+              }`}
           >
             {paymentMethod === 'card' && (
               <span />
@@ -298,11 +297,10 @@ export default function Payment() {
 
         <button
           type="button"
-          className={`payment-method-card ${
-            paymentMethod === 'netbanking'
+          className={`payment-method-card ${paymentMethod === 'netbanking'
               ? 'payment-method-card--selected'
               : ''
-          }`}
+            }`}
           onClick={() =>
             setPaymentMethod('netbanking')
           }
@@ -334,11 +332,10 @@ export default function Payment() {
           </div>
 
           <span
-            className={`payment-radio ${
-              paymentMethod === 'netbanking'
+            className={`payment-radio ${paymentMethod === 'netbanking'
                 ? 'payment-radio--selected'
                 : ''
-            }`}
+              }`}
           >
             {paymentMethod === 'netbanking' && (
               <span />
@@ -353,11 +350,10 @@ export default function Payment() {
 
         <button
           type="button"
-          className={`payment-method-card ${
-            paymentMethod === 'wallet'
+          className={`payment-method-card ${paymentMethod === 'wallet'
               ? 'payment-method-card--selected'
               : ''
-          }`}
+            }`}
           onClick={() => setPaymentMethod('wallet')}
         >
 
@@ -389,11 +385,10 @@ export default function Payment() {
           </div>
 
           <span
-            className={`payment-radio ${
-              paymentMethod === 'wallet'
+            className={`payment-radio ${paymentMethod === 'wallet'
                 ? 'payment-radio--selected'
                 : ''
-            }`}
+              }`}
           >
             {paymentMethod === 'wallet' && (
               <span />

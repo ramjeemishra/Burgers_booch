@@ -13,15 +13,12 @@ import {
   Navigation,
 } from 'lucide-react'
 import './styles/Cart.css'
-
+import splashLogo from '../assets/splash/logo.png'
+import burger from '../assets/home/burger-1.png'
 import pickupImage from '../assets/order-type/pickup.png'
 
 export default function Cart() {
   const navigate = useNavigate()
-
-  /* =========================================
-     QUANTITY
-  ========================================= */
 
   const quantity = 2
 
@@ -85,9 +82,12 @@ export default function Cart() {
 
         <header className="cart-page-header">
 
-          <div className="cart-page-logo">
-            <span>Burgers</span>
-            <span>&amp; Booch</span>
+          <div className="feedback-logo-wrap">
+            <img
+              src={splashLogo}
+              alt="Burgers & Booch"
+              className="feedback-logo"
+            />
           </div>
 
           <button
@@ -114,7 +114,7 @@ export default function Cart() {
             {/* Product image */}
 
             <img
-              src={pickupImage}
+              src={burger}
               alt="Simply Crispy Veggie"
               className="cart-product-image"
             />
