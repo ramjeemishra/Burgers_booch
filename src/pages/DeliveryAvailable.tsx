@@ -84,7 +84,7 @@ export default function DeliveryAvailable() {
 
         <button
           type="button"
-          onClick={() => navigate('/sign-in')}
+          onClick={() => navigate('/home')}
           className="delivery-available__continue"
         >
           Continue

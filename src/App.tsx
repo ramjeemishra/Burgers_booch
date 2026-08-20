@@ -5,6 +5,8 @@ import SelectOrderType from './pages/SelectOrderType'
 import LocationPermission from './pages/LocationPermission'
 import SelectLocation from './pages/SelectLocation'
 import DeliveryAvailable from './pages/DeliveryAvailable'
+import Home from './pages/Home'
+import Burgers from './pages/Burgers'
 
 function Placeholder({ name }: { name: string }) {
   return (
@@ -29,8 +31,8 @@ export default function App() {
         <Route path="/enter-mobile" element={<Placeholder name="Enter Mobile Number" />} />
         <Route path="/otp" element={<Placeholder name="OTP Verification" />} />
         <Route path="/personal-details" element={<Placeholder name="Insert Personal Details" />} />
-        <Route path="/home" element={<Placeholder name="Home Screen" />} />
-        <Route path="/menu/:categoryId" element={<Placeholder name="Veg Burger Menu" />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/menu/:categoryId" element={<Burgers />} />
         <Route path="/cart" element={<Placeholder name="Cart Screen" />} />
         <Route path="/payment" element={<Placeholder name="Payment Selection" />} />
         <Route path="/payment-success" element={<Placeholder name="Payment Successful" />} />
