@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
-import './styles/AddOnPopup.css'
+import './styles/AddOnPopUP.css'
 
 import burgerImage from '../assets/home/burger-1.png'
 
