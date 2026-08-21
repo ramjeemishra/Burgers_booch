@@ -1,48 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import 'tailwindcss';
 
-@theme {
-  --color-brand: #2F9FEF;
-  --color-brand-light: #EAF6FF;
-  --color-brand-dark: #1C7FCB;
-
-  --color-ink: #0E0E10;
-  --color-ink-soft: #3A3B3F;
-
-  --color-cream: #FDF0E2;
-
-  --color-sunset: #F4791D;
-  --color-sunset-light: #FDEDE0;
-
-  --color-veg: #22A559;
-  --color-nonveg: #E5484D;
-
-  --color-neutral-bg: #F9FAFB;
-  --color-neutral-border: #E5E7EB;
-  --color-neutral-muted: #6B7280;
-
-  --font-display: 'Poppins', sans-serif;
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --radius-card: 18px;
-  --radius-pill: 999px;
-
-  --shadow-card: 0 2px 10px rgba(14, 14, 16, 0.06);
-  --shadow-sheet: 0 -8px 24px rgba(14, 14, 16, 0.12);
-  --shadow-phone: 0 24px 60px rgba(14, 14, 16, 0.18);
-}
-
 * {
   box-sizing: border-box;
 }
 html,
-body,
-#root {
+body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #0a0a0a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  color: #0E0E10;
+  background: #F0F1F3;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+  background-color: #F0F1F3;
 }
 
 body {
@@ -55,7 +34,6 @@ body {
 
 .app-shell {
   width: 100%;
-  max-width: 430px;
   margin: 0 auto;
   min-height: 100dvh;
   background: #ffffff;
@@ -90,4 +68,27 @@ body {
 
 .tabular {
   font-variant-numeric: tabular-nums;
+}
+.desktop-block {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  padding: 2rem;
+  text-align: center;
+}
+
+.desktop-block__card h1 {
+  margin: 0 0 12px;
+  color: #fff;
+  font-size: 22px;
+}
+
+.desktop-block__card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 320px;
 }

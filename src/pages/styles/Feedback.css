@@ -16,10 +16,6 @@
   background: #fff;
 }
 
-/* =========================================
-   HEADER
-========================================= */
-
 .feedback-header {
   display: flex;
   align-items: center;
@@ -27,23 +23,17 @@
   padding: 0 8px;
 }
 
-.feedback-logo-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
 .feedback-logo {
-  width: 100%;
-  height: 100%;
+  width: 17dvw;
+  height: 8dvh;
   object-fit: cover;
   display: block;
 }
+
 .feedback-profile-button {
   display: flex;
-  width: 38px;
-  height: 38px;
+  width: 11dvw;
+  height: 5dvh;
   align-items: center;
   justify-content: center;
   border: 0;
@@ -52,10 +42,6 @@
   color: #48b6ff;
   padding: 0;
 }
-
-/* =========================================
-   SUCCESS
-========================================= */
 
 .feedback-success {
   margin-top: 36px;
@@ -89,10 +75,6 @@
   line-height: 15px;
 }
 
-/* =========================================
-   DELIVERED IMAGE
-========================================= */
-
 .feedback-delivered-image {
   display: flex;
   height: 155px;
@@ -108,10 +90,6 @@
   height: 155px;
   object-fit: contain;
 }
-
-/* =========================================
-   RATING CARD
-========================================= */
 
 .feedback-rating-card {
   box-sizing: border-box;
@@ -137,10 +115,6 @@
   font-size: 10px;
   line-height: 14px;
 }
-
-/* =========================================
-   STARS
-========================================= */
 
 .feedback-stars {
   display: flex;
@@ -174,10 +148,6 @@
   font-size: 10px;
   line-height: 13px;
 }
-
-/* =========================================
-   COMMENTS
-========================================= */
 
 .feedback-comment-section {
   margin-top: 26px;
@@ -222,9 +192,43 @@
   border-color: #48b6ff;
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+.feedback-submit-button {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 18px;
+  border: 0;
+  border-radius: 7px;
+  background: #48b6ff;
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.feedback-submit-button:hover {
+  background: #35a9f5;
+}
+
+.feedback-submit-button:active {
+  transform: scale(0.98);
+}
+
+.feedback-submit-button:disabled {
+  background: #b9b9b9;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.feedback-submit-error {
+  margin: 8px 0 0;
+  text-align: center;
+  color: #e05252;
+  font-size: 10px;
+  line-height: 14px;
+}
 
 @media (max-width: 430px) {
   .feedback-container {
@@ -263,4 +267,51 @@
   .feedback-comment-section {
     margin-top: 20px;
   }
+}
+
+.feedback-submitted {
+  display: flex;
+  min-height: calc(100vh - 120px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.feedback-submitted-icon {
+  display: flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: #53a45b;
+  color: #fff;
+}
+
+.feedback-submitted h1 {
+  margin: 0;
+  color: #111;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.feedback-submitted p {
+  max-width: 260px;
+  margin: 8px 0 0;
+  color: #777;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.feedback-submitted-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  color: #48b6ff;
 }

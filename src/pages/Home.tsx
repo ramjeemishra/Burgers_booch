@@ -27,6 +27,12 @@ import bestSeller2 from '../assets/home/burger-2.png'
 import aboutImage from '../assets/home/about.png'
 import customer1 from '../assets/home/customer-1.jpg'
 import customer2 from '../assets/home/customer-2.jpg'
+import cashIcon from '../assets/home/Cash.svg'
+import mastercardIcon from '../assets/home/Mastercard.svg'
+import googlePayIcon from '../assets/home/Google_Pay.svg'
+import paytmIcon from '../assets/home/Paytm.svg'
+import visaIcon from '../assets/home/Visa.svg'
+import upiIcon from '../assets/home/UPI.svg'
 import './styles/Home.css'
 
 type Category = {
@@ -195,7 +201,7 @@ export default function Home() {
           onClick={() => setVegOnly((value) => !value)}
         >
           <span>
-            <Leaf size={10} fill="white" />
+
           </span>
           Veg
         </button>
@@ -404,12 +410,12 @@ export default function Home() {
             <h3>Payment Methods</h3>
 
             <div className="home__payments">
-              <span>Cash</span>
-              <span>UPI</span>
-              <span>G Pay</span>
-              <span>Paytm</span>
-              <span>VISA</span>
-              <span>RuPay</span>
+              <img src={cashIcon} alt="Cash" />
+              <img src={mastercardIcon} alt="Mastercard" />
+              <img src={googlePayIcon} alt="G Pay" />
+              <img src={paytmIcon} alt="Paytm" />
+              <img src={visaIcon} alt="Visa" />
+              <img src={upiIcon} alt="UPI" />
             </div>
           </div>
         </div>

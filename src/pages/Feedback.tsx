@@ -1,20 +1,37 @@
 import { useState } from 'react'
 import { UserRound, Check, Star } from 'lucide-react'
 import './styles/Feedback.css'
-
 import deliveredImage from '../assets/order-type/delivered.png'
 import splashLogo from '../assets/splash/logo.png'
 
 export default function Feedback() {
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleSubmit = () => {
+    if (rating === 0) {
+      setError('Please select a rating before submitting.')
+      return
+    }
+
+    setError('')
+
+    const review = {
+      rating,
+      comment: comment.trim(),
+    }
+
+    console.log('Review submitted:', review)
+
+    setSubmitted(true)
+  }
 
   return (
     <main className="feedback-page">
       <div className="feedback-container">
-
         <header className="feedback-header">
-
           <div className="feedback-logo-wrap">
             <img
               src={splashLogo}
@@ -33,76 +50,130 @@ export default function Feedback() {
               strokeWidth={1.7}
             />
           </button>
-
         </header>
 
-        {/* =========================================
-            DELIVERY SUCCESS
-        ========================================= */}
+        {!submitted ? (
+          <>
+            <section className="feedback-success">
+              <div className="feedback-success-icon">
+                <Check
+                  size={22}
+                  strokeWidth={3}
+                />
+              </div>
 
-        <section className="feedback-success">
+              <h1>
+                Your order has been delivered!
+              </h1>
 
-          <div className="feedback-success-icon">
-            <Check
-              size={22}
-              strokeWidth={3}
-            />
-          </div>
+              <p>
+                We hope you had a wonderful experience
+              </p>
+            </section>
 
-          <h1>
-            Your order has been delivered!
-          </h1>
+            <div className="feedback-delivered-image">
+              <img
+                src={deliveredImage}
+                alt="Order delivered"
+              />
+            </div>
 
-          <p>
-            We hope you had a wonderful experience
-          </p>
+            <section className="feedback-rating-card">
+              <h2>
+                How was your experience
+              </h2>
 
-        </section>
+              <p>
+                Your feedback helps us serve you better
+              </p>
 
-        {/* =========================================
-            DELIVERED IMAGE
-        ========================================= */}
+              <div className="feedback-stars">
+                {[1, 2, 3, 4].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    className={`feedback-star ${
+                      rating >= star
+                        ? 'feedback-star--active'
+                        : ''
+                    }`}
+                    onClick={() => {
+                      setRating(star)
+                      setError('')
+                    }}
+                    aria-label={`Rate ${star} stars`}
+                  >
+                    <Star
+                      size={17}
+                      strokeWidth={1.8}
+                      fill={
+                        rating >= star
+                          ? 'currentColor'
+                          : 'none'
+                      }
+                    />
+                  </button>
+                ))}
+              </div>
 
-        <div className="feedback-delivered-image">
+              <span className="feedback-rating-hint">
+                Tap a star to rate
+              </span>
+            </section>
 
-          <img
-            src={deliveredImage}
-            alt="Order delivered"
-          />
+            <section className="feedback-comment-section">
+              <label htmlFor="feedback-comment">
+                Any additional comments?
+                <span> (Optional)</span>
+              </label>
 
-        </div>
+              <textarea
+                id="feedback-comment"
+                value={comment}
+                onChange={(event) => {
+                  setComment(event.target.value)
+                  setError('')
+                }}
+                placeholder="Tell us more about your experience..."
+              />
 
-        {/* =========================================
-            EXPERIENCE CARD
-        ========================================= */}
-
-        <section className="feedback-rating-card">
-
-          <h2>
-            How was your experience
-          </h2>
-
-          <p>
-            Your feedback helps us serve you better
-          </p>
-
-          {/* Stars */}
-
-          <div className="feedback-stars">
-
-            {[1, 2, 3, 4].map((star) => (
               <button
-                key={star}
                 type="button"
-                className={`feedback-star ${rating >= star
-                    ? 'feedback-star--active'
-                    : ''
-                  }`}
-                onClick={() => setRating(star)}
-                aria-label={`Rate ${star} stars`}
+                className="feedback-submit-button"
+                onClick={handleSubmit}
               >
+                Submit Review
+              </button>
+
+              {error && (
+                <p className="feedback-submit-error">
+                  {error}
+                </p>
+              )}
+            </section>
+          </>
+        ) : (
+          <section className="feedback-submitted">
+            <div className="feedback-submitted-icon">
+              <Check
+                size={30}
+                strokeWidth={3}
+              />
+            </div>
+
+            <h1>
+              Thank you for your feedback!
+            </h1>
+
+            <p>
+              Your review has been submitted successfully.
+            </p>
+
+            <div className="feedback-submitted-rating">
+              {[1, 2, 3, 4].map((star) => (
                 <Star
-                  size={17}
+                  key={star}
+                  size={21}
                   strokeWidth={1.8}
                   fill={
                     rating >= star
@@ -110,41 +181,10 @@ export default function Feedback() {
                       : 'none'
                   }
                 />
-              </button>
-            ))}
-
-          </div>
-
-          <span className="feedback-rating-hint">
-            Tap a star to rate
-          </span>
-
-        </section>
-
-        {/* =========================================
-            ADDITIONAL COMMENTS
-        ========================================= */}
-
-        <section className="feedback-comment-section">
-
-          <label htmlFor="feedback-comment">
-            Any additional comments?
-            <span>
-              {' '} (Optional)
-            </span>
-          </label>
-
-          <textarea
-            id="feedback-comment"
-            value={comment}
-            onChange={(event) =>
-              setComment(event.target.value)
-            }
-            placeholder="Tell us more about your experience..."
-          />
-
-        </section>
-
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   )

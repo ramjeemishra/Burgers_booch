@@ -63,6 +63,7 @@ export default function Burgers() {
         (sum, product) => sum + product.price * (quantities[product.id] ?? 0),
         0,
     )
+    const selectedProducts = products.filter((product) => (quantities[product.id] ?? 0) > 0)
 
     const menuTitle =
         categoryId === 'burgers' || !categoryId ? 'Vegetarian Burgers' : `${categoryId} Menu`
@@ -249,6 +250,16 @@ export default function Burgers() {
 
             {cartCount > 0 && (
                 <section className="burgers__cart-bar" aria-label="Add to cart">
+                    <div className="burgers__cart-items">
+                        {selectedProducts.map((product) => (
+                            <div className="burgers__cart-item" key={product.id}>
+                                <img src={product.image} alt={product.name} />
+                                <span>{product.name}</span>
+                                <strong>×{quantities[product.id]}</strong>
+                            </div>
+                        ))}
+                    </div>
+
                     <div className="burgers__cart-search-row">
                         <label className="burgers__search">
                             <Search size={13} />
