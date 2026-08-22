@@ -13,14 +13,14 @@ import {
 } from 'lucide-react'
 import logo from '../assets/splash/logo.png'
 import craftedBanner from '../assets/home/crafted-burgers.png'
-import burgers from '../assets/home/burger.png'
-import salads from '../assets/home/salad.png'
+import burgers from "../assets/home/Burger.png";
+import salads from "../assets/home/Salad.png";
 import sandwich from '../assets/home/sandwich.png'
-import combos from '../assets/home/combo.png'
+import combos from "../assets/home/Combo.png";
 import beverages from '../assets/home/beverages.png'
-import desserts from '../assets/home/deserts.png'
+import desserts from "../assets/home/Deserts.png";
 import sides from '../assets/home/sides.png'
-import newArrival from '../assets/home/new_arrivals.png'
+import newArrival from "../assets/home/New_Arrivals.png";
 import bestSeller1 from '../assets/home/burger-1.png'
 import bestSeller2 from '../assets/home/burger-2.png'
 import aboutImage from '../assets/home/about.png'
