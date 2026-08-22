@@ -4,7 +4,7 @@
   --burgers-muted: rgba(14, 14, 16, 0.55);
   --burgers-border: rgba(14, 14, 16, 0.14);
   --burgers-cream: #fff7ef;
-  --burgers-green: #0aa65a;
+  --burgers-green: #55aa5c;
 }
 
 .burgers {
@@ -48,111 +48,153 @@
 }
 
 .burgers__pickup {
-  margin-top: 0.7dvh;
-}
-
-.burgers__pickup p {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin: 0;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  border: 1px solid var(--burgers-border);
+  border-radius: 10px;
+  background: var(--burgers-cream);
+  padding: 0.55rem 0.7rem;
+}
+
+.burgers__pickup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.burgers__pickup-label {
+  font-size: 10px;
   color: var(--burgers-muted);
-  font-size: 11px;
-  line-height: 15px;
 }
 
-.burgers__pickup p strong {
-  color: #111;
+.burgers__pickup-info strong {
   font-size: 13px;
+  font-weight: 700;
+  color: var(--burgers-text);
 }
 
-.burgers__pickup-arrow {
+.burgers__location {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.burgers__location-pin {
+  height: 7px;
+  width: 7px;
+  border-radius: 9999px;
+  background: var(--brand-primary);
+}
+
+.burgers__location strong {
+  font-size: 12px;
+  font-weight: 700;
   color: var(--brand-primary);
-  font-size: 13px;
-  transform: rotate(-25deg);
 }
 
 .burgers__order-type {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-top: 1.2dvh;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .burgers__order-option {
   display: flex;
-  min-height: 5.5dvh;
+  min-height: 52px;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   box-sizing: border-box;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  border: 1.5px solid var(--burgers-border);
+  border-radius: 10px;
   background: #fff;
-  padding: 6px 9px;
+  padding: 0.5rem 0.6rem;
   text-align: left;
-  color: var(--brand-primary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .burgers__order-option--active {
   border-color: var(--brand-primary);
+  background: rgba(72, 182, 255, 0.06);
 }
 
-.burgers__order-option span {
+.burgers__order-icon {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: rgba(72, 182, 255, 0.12);
+  color: var(--brand-primary);
+}
+
+.burgers__order-option span:not(.burgers__order-icon) {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .burgers__order-option strong {
-  color: #111;
-  font-size: 11px;
+  color: var(--burgers-text);
+  font-size: 12px;
   font-weight: 600;
-  line-height: 14px;
+  line-height: 15px;
 }
 
 .burgers__order-option small {
-  color: #555;
-  font-size: 9px;
-  line-height: 11px;
+  color: var(--burgers-muted);
+  font-size: 9.5px;
+  line-height: 12px;
 }
 
 .burgers__menu {
-  margin-top: 10px;
+  margin-top: 1.1rem;
 }
 
 .burgers__menu-heading {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 7px;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
 }
 
 .burgers__menu-heading h1 {
   margin: 0;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 17px;
+  line-height: 20px;
 }
 
 .burgers__back {
   display: flex;
-  width: 18px;
-  height: 18px;
+  width: 26px;
+  height: 26px;
   align-items: center;
   justify-content: center;
-  border: 0;
-  background: transparent;
+  border: 1px solid var(--burgers-border);
+  border-radius: 9999px;
+  background: #fff;
   padding: 0;
-  color: #111;
+  color: var(--burgers-text);
+  cursor: pointer;
 }
 
 .burgers__filters {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin: 0 -1px 14px;
+  gap: 0.4rem;
+  margin: 0 -9px 0.9rem;
   overflow-x: auto;
-  background: var(--burgers-cream);
-  padding: 7px 0;
+  padding: 0.15rem 9px 0.6rem;
   scrollbar-width: none;
 }
 
@@ -162,55 +204,74 @@
 
 .burgers__filter {
   display: inline-flex;
-  height: 23px;
+  height: 30px;
   flex: 0 0 auto;
   align-items: center;
-  justify-content: center;
-  gap: 3px;
-  border: 1px solid #999;
-  border-radius: 5px;
+  gap: 0.3rem;
+  border: 1.5px solid var(--burgers-border);
+  border-radius: 9999px;
   background: #fff;
-  padding: 0 7px;
-  color: #222;
-  font-size: 7px;
+  padding: 0 0.65rem;
+  color: var(--burgers-text);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.burgers__filter--veg {
-  border-color: #4cae68;
-  color: #168d42;
+.burgers__filter--selected {
+  border-color: var(--brand-primary);
+  background: rgba(72, 182, 255, 0.08);
+  color: var(--brand-primary);
 }
 
-.burgers__filter--nonveg {
-  border-color: #999;
+.burgers__filter--veg.burgers__filter--selected {
+  border-color: var(--burgers-green);
+  background: rgba(85, 170, 92, 0.08);
+  color: var(--burgers-green);
+}
+
+.burgers__filter--nonveg.burgers__filter--selected {
+  border-color: #e04141;
+  background: rgba(224, 65, 65, 0.06);
+  color: #e04141;
 }
 
 .burgers__veg-icon {
   display: inline-flex;
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
   align-items: center;
   justify-content: center;
-  border: 1px solid currentColor;
-  border-radius: 2px;
-  font-size: 6px;
+  border: 1.2px solid currentColor;
+  border-radius: 3px;
+}
+
+.burgers__veg-dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 9999px;
+  background: currentColor;
 }
 
 .burgers__nonveg-icon {
-  color: #ef3131;
-  font-size: 6px;
+  display: inline-flex;
+  width: 9px;
+  height: 9px;
+  border: 1.2px solid currentColor;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 
 .burgers__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 5px;
+  gap: 0.65rem;
 }
 
 .burgers__card {
   min-width: 0;
   overflow: hidden;
-  border: 1px solid #d7d7d7;
-  border-radius: 6px;
+  border: 1px solid var(--burgers-border);
+  border-radius: 12px;
   background: #fff;
 }
 
@@ -218,93 +279,156 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  padding: 3px;
-  box-sizing: border-box;
   background: var(--burgers-cream);
-  border-radius: 5px;
 }
 
 .burgers__image-wrap img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 5px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .burgers__card-body {
-  padding: 0 4px 4px;
+  padding: 0.5rem 0.55rem 0.6rem;
+}
+
+.burgers__card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
 }
 
 .burgers__product-veg {
-  display: inline-flex;
-  width: 9px;
-  height: 9px;
+  display: flex;
+  height: 13px;
+  width: 13px;
+  flex: none;
   align-items: center;
   justify-content: center;
-  border: 1px solid #099b50;
-  border-radius: 2px;
-  color: #099b50;
+  border: 1.2px solid var(--burgers-green);
+  border-radius: 3px;
+}
+
+.burgers__product-veg-dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 9999px;
+  background: var(--burgers-green);
+}
+
+.burgers__card-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.burgers__bestseller {
+  flex: none;
+  font-size: 9px;
+  font-weight: 600;
+  color: #ff8a00;
+}
+
+.burgers__rating {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--burgers-green);
+}
+
+.burgers__rating svg {
+  color: var(--burgers-green);
+}
+
+.burgers__rating span {
+  font-weight: 400;
+  color: var(--burgers-muted);
 }
 
 .burgers__card h2 {
-  height: 16px;
-  margin: 2px 0 4px;
+  height: 32px;
+  margin: 0.35rem 0 0;
   overflow: hidden;
-  font-size: 8px;
+  font-size: 12.5px;
   font-weight: 600;
-  line-height: 9px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  line-height: 16px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .burgers__card-bottom {
   display: flex;
-  min-height: 23px;
+  min-height: 30px;
   align-items: center;
   justify-content: space-between;
-  gap: 3px;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
+}
+
+.burgers__price-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.burgers__price-original {
+  font-size: 9px;
+  color: rgba(14, 14, 16, 0.4);
+  text-decoration: line-through;
 }
 
 .burgers__price {
-  font-size: 8px;
-  line-height: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--burgers-text);
 }
 
 .burgers__add {
-  min-width: 38px;
-  height: 22px;
-  border: 1px solid var(--brand-primary);
-  border-radius: 4px;
+  min-width: 52px;
+  height: 28px;
+  border: 1.5px solid var(--brand-primary);
+  border-radius: 7px;
   background: #fff;
-  padding: 0 7px;
+  padding: 0 0.6rem;
   color: var(--brand-primary);
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .burgers__quantity {
   display: flex;
-  height: 22px;
+  height: 28px;
   align-items: center;
-  border: 1px solid #dce9f0;
-  border-radius: 4px;
+  border: 1.5px solid var(--brand-primary);
+  border-radius: 7px;
   overflow: hidden;
 }
 
 .burgers__quantity button {
-  width: 16px;
+  width: 22px;
   height: 100%;
   border: 0;
   background: #fff;
   color: var(--brand-primary);
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .burgers__quantity span {
-  min-width: 14px;
+  min-width: 16px;
   text-align: center;
   color: var(--brand-primary);
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .burgers__cart-bar {
@@ -317,19 +441,19 @@
   box-sizing: border-box;
   transform: translateX(-50%);
   overflow: hidden;
-  border-radius: 7px 7px 0 0;
+  border-radius: 16px 16px 0 0;
   background: #fff;
-  padding: 9px 10px 12px;
-  box-shadow: 0 -3px 12px rgba(0, 0, 0, .08);
+  padding: 0.75rem 0.7rem 0.85rem;
+  box-shadow: 0 -6px 20px rgba(14, 14, 16, 0.12);
 }
 
 .burgers__cart-items {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.4rem;
   max-height: 90px;
   overflow-y: auto;
-  margin-bottom: 8px;
+  margin-bottom: 0.6rem;
   scrollbar-width: none;
 }
 
@@ -340,13 +464,13 @@
 .burgers__cart-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.5rem;
 }
 
 .burgers__cart-item img {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -355,37 +479,37 @@
   flex: 1;
   min-width: 0;
   overflow: hidden;
-  font-size: 9px;
-  line-height: 12px;
+  font-size: 11px;
+  line-height: 14px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: #111;
+  color: var(--burgers-text);
 }
 
 .burgers__cart-item strong {
   flex-shrink: 0;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--brand-primary);
 }
 
 .burgers__cart-search-row {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 0.5rem;
 }
 
 .burgers__search {
   display: flex;
-  height: 29px;
+  height: 38px;
   min-width: 0;
   flex: 1;
   align-items: center;
-  gap: 5px;
+  gap: 0.4rem;
   box-sizing: border-box;
-  border: 1px solid #e1e1e1;
-  border-radius: 5px;
-  padding: 0 7px;
-  color: #999;
+  border: 1.5px solid var(--burgers-border);
+  border-radius: 10px;
+  padding: 0 0.65rem;
+  color: rgba(14, 14, 16, 0.4);
 }
 
 .burgers__search input {
@@ -395,33 +519,37 @@
   outline: 0;
   background: transparent;
   font: inherit;
-  font-size: 8px;
+  font-size: 11.5px;
+  color: var(--burgers-text);
 }
 
 .burgers__menu-button {
-  width: 43px;
-  height: 29px;
+  min-width: 56px;
+  height: 38px;
   border: 0;
-  border-radius: 5px;
-  background: #050505;
+  border-radius: 10px;
+  background: var(--burgers-text);
   color: #fff;
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .burgers__checkout {
   display: flex;
   width: 100%;
-  height: 31px;
+  height: 44px;
   align-items: center;
   justify-content: space-between;
-  margin-top: 7px;
+  margin-top: 0.6rem;
   border: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   background: var(--brand-primary);
-  padding: 0 11px;
+  padding: 0 0.8rem;
   color: #fff;
-  font-size: 9px;
-  font-weight: 600;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 @media (min-width: 600px) {

@@ -383,3 +383,69 @@
     width: 100%;
   }
 }
+.addon-customize {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 16px 0;
+}
+
+.addon-customize-group span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.addon-pill-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.addon-pill {
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    background: #fff;
+    color: #333;
+}
+
+.addon-pill--active {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+}
+.addon-customize-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.addon-customize-tag {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: #666;
+    background: #fff;
+    position: relative;
+}
+
+.addon-customize-tag--selected {
+    border-color: #1a1a1a;
+    color: #1a1a1a;
+    background: #f5f5f5;
+}
+
+.addon-customize-tag input[type='checkbox'] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}

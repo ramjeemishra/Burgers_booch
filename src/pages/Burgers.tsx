@@ -5,12 +5,12 @@ import {
     Bike,
     Box,
     CircleUserRound,
-    Leaf,
-    Mic,
     Search,
     SlidersHorizontal,
+    Star,
     Store,
 } from 'lucide-react'
+import AddOnPopup from '../component/AddOnPopUP'
 import logo from '../assets/splash/logo.png'
 import burger1 from '../assets/home/burger-1.png'
 import burger2 from '../assets/home/burger-2.png'
@@ -24,15 +24,65 @@ type Product = {
     name: string
     image: string
     price: number
+    originalPrice?: number
+    rating?: number
+    reviewCount?: number
+    isBestseller?: boolean
     veg: boolean
 }
 
 const products: Product[] = [
-    { id: 1, name: 'Simply Crispy Veggie', image: burger1, price: 0, veg: true },
-    { id: 2, name: 'Beetroot Bliss Burger', image: burger2, price: 0, veg: true },
-    { id: 3, name: 'Peppy Panner Burger', image: burger3, price: 0, veg: true },
-    { id: 4, name: 'Mushroom Magic Burger', image: burger4, price: 0, veg: true },
+    {
+        id: 1,
+        name: 'Simply Crispy Veggie',
+        image: burger1,
+        price: 59,
+        originalPrice: 70,
+        rating: 4.5,
+        reviewCount: 2200,
+        isBestseller: true,
+        veg: true,
+    },
+    {
+        id: 2,
+        name: 'Beetroot Bliss Burger',
+        image: burger2,
+        price: 59,
+        originalPrice: 90,
+        rating: 4.1,
+        reviewCount: 13,
+        veg: true,
+    },
+    {
+        id: 3,
+        name: 'Peppy Paneer Burger',
+        image: burger3,
+        price: 65,
+        originalPrice: 85,
+        rating: 4.3,
+        reviewCount: 370,
+        isBestseller: true,
+        veg: true,
+    },
+    {
+        id: 4,
+        name: 'Mushroom Magic Burger',
+        image: burger4,
+        price: 59,
+        originalPrice: 80,
+        rating: 4.2,
+        reviewCount: 344,
+        veg: true,
+    },
 ]
+
+function formatReviewCount(count: number) {
+    if (count >= 1000) {
+        return `${(count / 1000).toFixed(1)}K+`
+    }
+
+    return `${count}`
+}
 
 export default function Burgers() {
     const navigate = useNavigate()
@@ -41,6 +91,7 @@ export default function Burgers() {
     const [stockOnly, setStockOnly] = useState(false)
     const [vegOnly, setVegOnly] = useState(true)
     const [query, setQuery] = useState('')
+    const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null)
     const [showSignIn, setShowSignIn] = useState(false)
     const [quantities, setQuantities] = useState<Record<number, number>>({})
 
@@ -99,17 +150,17 @@ export default function Burgers() {
             </header>
 
             <section className="burgers__pickup">
-                <p>
-                    Pickup from <strong>Burger & Booch</strong>
-                    <span className="burgers__pickup-arrow">◢</span>
-                </p>
+                <div className="burgers__pickup-info">
+                    <span className="burgers__pickup-label">Pickup from</span>
+                    <strong>Burger & Booch</strong>
+                </div>
 
                 <button
                     type="button"
                     className="burgers__location"
                     onClick={() => navigate('/select-location')}
                 >
-                    <span className="burgers__location-pin">●</span>
+                    <span className="burgers__location-pin" />
                     <strong>Alibag</strong>
                 </button>
             </section>
@@ -121,7 +172,9 @@ export default function Burgers() {
                         }`}
                     onClick={() => setOrderType('delivery')}
                 >
-                    <Bike size={16} strokeWidth={1.8} />
+                    <span className="burgers__order-icon">
+                        <Bike size={15} strokeWidth={1.8} />
+                    </span>
                     <span>
                         <strong>Get Delivery</strong>
                         <small>Fast to your door</small>
@@ -134,7 +187,9 @@ export default function Burgers() {
                         }`}
                     onClick={() => setOrderType('pickup')}
                 >
-                    <Store size={16} strokeWidth={1.8} />
+                    <span className="burgers__order-icon">
+                        <Store size={15} strokeWidth={1.8} />
+                    </span>
                     <span>
                         <strong>Pickup</strong>
                         <small>Grab on your own</small>
@@ -178,7 +233,9 @@ export default function Burgers() {
                             }`}
                         onClick={() => setVegOnly((value) => !value)}
                     >
-                        <span className="burgers__veg-icon">✓</span>
+                        <span className="burgers__veg-icon">
+                            <span className="burgers__veg-dot" />
+                        </span>
                         Veg
                     </button>
 
@@ -188,7 +245,7 @@ export default function Burgers() {
                             }`}
                         onClick={() => setVegOnly(false)}
                     >
-                        <span className="burgers__nonveg-icon">■</span>
+                        <span className="burgers__nonveg-icon" />
                         Non-Veg
                     </button>
                 </div>
@@ -204,14 +261,43 @@ export default function Burgers() {
                                 </div>
 
                                 <div className="burgers__card-body">
-                                    <span className="burgers__product-veg" aria-label="Vegetarian">
-                                        <Leaf size={7} fill="currentColor" />
-                                    </span>
+                                    <div className="burgers__card-meta">
+                                        {product.veg && (
+                                            <span className="burgers__product-veg">
+                                                <span className="burgers__product-veg-dot" />
+                                            </span>
+                                        )}
+
+                                        <div className="burgers__card-badges">
+                                            {product.isBestseller && (
+                                                <span className="burgers__bestseller">Bestseller</span>
+                                            )}
+
+                                            {product.rating !== undefined && (
+                                                <span className="burgers__rating">
+                                                    <Star size={8} fill="currentColor" />
+                                                    {product.rating}
+                                                    {product.reviewCount !== undefined && (
+                                                        <span>
+                                                            ({formatReviewCount(product.reviewCount)})
+                                                        </span>
+                                                    )}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
 
                                     <h2>{product.name}</h2>
 
                                     <div className="burgers__card-bottom">
-                                        <span className="burgers__price">₹ XXX</span>
+                                        <div className="burgers__price-group">
+                                            {product.originalPrice !== undefined && (
+                                                <span className="burgers__price-original">
+                                                    ₹{product.originalPrice}
+                                                </span>
+                                            )}
+                                            <span className="burgers__price">₹{product.price}</span>
+                                        </div>
 
                                         {quantity > 0 ? (
                                             <div className="burgers__quantity">
@@ -235,7 +321,7 @@ export default function Burgers() {
                                             <button
                                                 type="button"
                                                 className="burgers__add"
-                                                onClick={() => changeQuantity(product.id, 1)}
+                                                onClick={() => setCustomizingProduct(product)}
                                             >
                                                 Add
                                             </button>
@@ -268,7 +354,6 @@ export default function Burgers() {
                                 onChange={(event) => setQuery(event.target.value)}
                                 placeholder="Search your favorite items"
                             />
-                            <Mic size={12} />
                         </label>
 
                         <button
@@ -289,6 +374,13 @@ export default function Burgers() {
                         <span>Add to Cart</span>
                     </button>
                 </section>
+            )}
+            {customizingProduct && (
+                <AddOnPopup
+                    product={customizingProduct}
+                    onClose={() => setCustomizingProduct(null)}
+                    onAddToCart={() => changeQuantity(customizingProduct.id, 1)}
+                />
             )}
             {showSignIn && (
                 <SignIn onClose={() => setShowSignIn(false)} />

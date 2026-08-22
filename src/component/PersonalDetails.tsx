@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { X } from 'lucide-react'
+import { X, User, Mail } from 'lucide-react'
 import './styles/PersonalDetails.css'
 
 type PersonalDetailsProps = {
@@ -7,10 +7,7 @@ type PersonalDetailsProps = {
   onSubmitSuccess: () => void
 }
 
-export default function PersonalDetails({
-  onClose,
-  onSubmitSuccess,
-}: PersonalDetailsProps) {
+export default function PersonalDetails({ onClose, onSubmitSuccess }: PersonalDetailsProps) {
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [gender, setGender] = useState<'male' | 'female' | ''>('')
@@ -20,26 +17,20 @@ export default function PersonalDetails({
   const handleSubmit = () => {
     if (!isFormValid) return
 
-    console.log('Personal details:', {
-      fullName,
-      email,
-      gender,
-    })
-
-    // Move to AddOnPopup
+    console.log('Personal details:', { fullName, email, gender })
     onSubmitSuccess()
   }
 
   return (
-    <div
-      className="personal-details-overlay"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div className="personal-details-overlay" role="dialog" aria-modal="true">
       <div className="personal-details-sheet">
-        {/* Header */}
+        <div className="personal-details-handle" />
+
         <div className="personal-details-header">
-          <h2>Welcome</h2>
+          <div>
+            <span className="personal-details-eyebrow">Get Started</span>
+            <h2>Welcome</h2>
+          </div>
 
           <button
             type="button"
@@ -51,79 +42,77 @@ export default function PersonalDetails({
           </button>
         </div>
 
-        {/* Subtitle */}
-        <p className="personal-details-subtitle">
-          Help us know you better!
-        </p>
+        <p className="personal-details-subtitle">A few details before your first bite.</p>
 
-        {/* Full Name */}
         <div className="personal-details-field">
           <label htmlFor="full-name">
             Full Name <span>*</span>
           </label>
 
-          <input
-            id="full-name"
-            type="text"
-            placeholder="Your full name"
-            value={fullName}
-            onChange={(event) => {
-              setFullName(event.target.value)
-            }}
-          />
+          <div className="personal-details-input-wrap">
+            <User size={14} strokeWidth={1.6} />
+            <input
+              id="full-name"
+              type="text"
+              placeholder="Your full name"
+              value={fullName}
+              onChange={(event) => setFullName(event.target.value)}
+            />
+          </div>
         </div>
 
-        {/* Email */}
         <div className="personal-details-field">
           <label htmlFor="email">
             Email Address <small>(Optional)</small>
           </label>
 
-          <input
-            id="email"
-            type="email"
-            placeholder="Your email address"
-            value={email}
-            onChange={(event) => {
-              setEmail(event.target.value)
-            }}
-          />
-        </div>
-
-        {/* Gender */}
-        <div className="personal-details-gender">
-          <label>Gender</label>
-
-          <div className="personal-details-radio-group">
-            {/* Male */}
-            <label className="personal-details-radio">
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={gender === 'male'}
-                onChange={() => setGender('male')}
-              />
-
-              <span>Male</span>
-            </label>
-
-            {/* Female */}
-            <label className="personal-details-radio">
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={gender === 'female'}
-                onChange={() => setGender('female')}
-              />
-
-              <span>Female</span>
-            </label>
+          <div className="personal-details-input-wrap">
+            <Mail size={14} strokeWidth={1.6} />
+            <input
+              id="email"
+              type="email"
+              placeholder="Your email address"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
           </div>
         </div>
 
-        {/* Submit */}
+        <div className="personal-details-gender">
+          <label>Gender</label>
+
+          <div className="personal-details-segment">
+            <div
+              className="personal-details-segment-thumb"
+              style={{
+                transform:
+                  gender === 'female'
+                    ? 'translateX(100%)'
+                    : gender === 'male'
+                    ? 'translateX(0%)'
+                    : 'translateX(0%)',
+                opacity: gender ? 1 : 0,
+              }}
+            />
+
+            <button
+              type="button"
+              className={`personal-details-segment-option ${gender === 'male' ? 'personal-details-segment-option--active' : ''}`}
+              onClick={() => setGender('male')}
+            >
+              Male
+            </button>
+
+            <button
+              type="button"
+              className={`personal-details-segment-option ${gender === 'female' ? 'personal-details-segment-option--active' : ''}`}
+              onClick={() => setGender('female')}
+            >
+              Female
+            </button>
+          </div>
+        </div>
+
         <button
           type="button"
           className="personal-details-submit"

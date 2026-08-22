@@ -1,188 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+
 .personal-details-overlay {
-  position: fixed;
-  z-index: 1003;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.58);
+    position: fixed;
+    z-index: 1003;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(10, 20, 30, 0.55);
+    backdrop-filter: blur(3px);
 }
 
 .personal-details-sheet {
-  width: min(100%, 430px);
-  box-sizing: border-box;
-  padding: 8px 10px 11px;
-  border-radius: 7px 7px 0 0;
-  background: #fff;
-  color: #111;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
-  animation: personal-details-slide-up 0.22s ease-out;
+    width: min(100%, 430px);
+    box-sizing: border-box;
+    padding: 10px 20px 20px;
+    border-radius: 20px 20px 0 0;
+    background: #ffffff;
+    color: #111;
+    box-shadow: 0 -12px 40px rgba(15, 30, 45, 0.16);
+    animation: personal-details-slide-up 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Header */
+.personal-details-handle {
+    width: 36px;
+    height: 4px;
+    margin: 0 auto 14px;
+    border-radius: 999px;
+    background: #e0e0e0;
+}
 
 .personal-details-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.personal-details-eyebrow {
+    display: block;
+    margin-bottom: 3px;
+    color: #169de0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
 }
 
 .personal-details-header h2 {
-  margin: 0;
-  font-size: 13px;
-  line-height: 18px;
-  font-weight: 600;
+    margin: 0;
+    color: #111;
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .personal-details-close {
-  display: flex;
-  width: 22px;
-  height: 22px;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: #777;
-  padding: 0;
-  cursor: pointer;
+    display: flex;
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: #f0f6fb;
+    color: #6b7280;
+    padding: 0;
+    cursor: pointer;
 }
-
-/* Subtitle */
 
 .personal-details-subtitle {
-  margin: 2px 0 10px;
-  color: #999;
-  font-size: 9px;
-  line-height: 13px;
+    margin: 6px 0 20px;
+    color: #999;
+    font-size: 12px;
+    line-height: 17px;
 }
 
-/* Fields */
-
 .personal-details-field {
-  margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .personal-details-field label {
-  display: block;
-  margin-bottom: 5px;
-  color: #222;
-  font-size: 9px;
-  line-height: 12px;
-  font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #111;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .personal-details-field label span {
-  color: #169de0;
+    color: #169de0;
 }
 
 .personal-details-field label small {
-  color: #999;
-  font-size: 8px;
-  font-weight: 400;
+    color: #999;
+    font-size: 10px;
+    font-weight: 400;
 }
 
-.personal-details-field input {
-  width: 100%;
-  height: 26px;
-  box-sizing: border-box;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  outline: none;
-  background: #fff;
-  padding: 0 9px;
-  color: #222;
-  font-family: inherit;
-  font-size: 9px;
+.personal-details-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    border: 1px solid #e0e0e0;
+    border-radius: 11px;
+    background: #f5f8fb;
+    padding: 0 13px;
+    color: #999;
+    transition: border-color 0.15s ease, background 0.15s ease;
 }
 
-.personal-details-field input::placeholder {
-  color: #999;
+.personal-details-input-wrap:focus-within {
+    border-color: #48b6ff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(72, 182, 255, 0.15);
 }
 
-.personal-details-field input:focus {
-  border-color: #48b6ff;
+.personal-details-input-wrap input {
+    flex: 1;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: #111;
+    font-family: inherit;
+    font-size: 13px;
 }
 
-/* Gender */
+.personal-details-input-wrap input::placeholder {
+    color: #999;
+}
 
 .personal-details-gender {
-  margin-top: 1px;
-  margin-bottom: 10px;
+    margin: 4px 0 20px;
 }
 
 .personal-details-gender > label {
-  display: block;
-  margin-bottom: 5px;
-  color: #222;
-  font-size: 9px;
-  line-height: 12px;
-  font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #111;
+    font-size: 11px;
+    font-weight: 600;
 }
 
-.personal-details-radio-group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.personal-details-segment {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 40px;
+    border-radius: 11px;
+    background: #f5f8fb;
+    padding: 3px;
 }
 
-.personal-details-radio {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #222;
-  font-size: 9px;
-  font-weight: 400;
-  cursor: pointer;
+.personal-details-segment-thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: calc(50% - 3px);
+    height: calc(100% - 6px);
+    border-radius: 8px;
+    background: #48b6ff;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.15s ease;
 }
 
-.personal-details-radio input {
-  width: 12px;
-  height: 12px;
-  margin: 0;
-  accent-color: #111;
+.personal-details-segment-option {
+    position: relative;
+    z-index: 1;
+    border: 0;
+    background: transparent;
+    color: #6b7280;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-/* Submit */
+.personal-details-segment-option--active {
+    color: #ffffff;
+}
 
 .personal-details-submit {
-  display: flex;
-  width: 100%;
-  height: 28px;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 6px;
-  background: #48b6ff;
-  color: #fff;
-  font-family: inherit;
-  font-size: 10px;
-  font-weight: 500;
-  cursor: pointer;
+    display: flex;
+    width: 100%;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 12px;
+    background: #48b6ff;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(72, 182, 255, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.personal-details-submit:active:not(:disabled) {
+    transform: scale(0.98);
 }
 
 .personal-details-submit:disabled {
-  opacity: 0.55;
-  cursor: default;
+    background: #d5e8f7;
+    color: #ffffff;
+    box-shadow: none;
+    cursor: default;
 }
 
-/* Animation */
-
 @keyframes personal-details-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 430px) {
-  .personal-details-sheet {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
+    .personal-details-sheet {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
 }

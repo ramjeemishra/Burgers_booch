@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   UserRound,
@@ -7,21 +7,20 @@ import {
   Bike,
   Package,
   Search,
-  Leaf,
   Star,
   Mail,
   Phone,
 } from 'lucide-react'
 import logo from '../assets/splash/logo.png'
 import craftedBanner from '../assets/home/crafted-burgers.png'
-import burgers from '../assets/home/burgers.png'
-import salads from '../assets/home/salads.png'
+import burgers from '../assets/home/burger.png'
+import salads from '../assets/home/salad.png'
 import sandwich from '../assets/home/sandwich.png'
-import combos from '../assets/home/combos.png'
+import combos from '../assets/home/combo.png'
 import beverages from '../assets/home/beverages.png'
-import desserts from '../assets/home/desserts.png'
+import desserts from '../assets/home/deserts.png'
 import sides from '../assets/home/sides.png'
-import newArrival from '../assets/home/new-arrival.png'
+import newArrival from '../assets/home/new_arrivals.png'
 import bestSeller1 from '../assets/home/burger-1.png'
 import bestSeller2 from '../assets/home/burger-2.png'
 import aboutImage from '../assets/home/about.png'
@@ -43,7 +42,19 @@ type Category = {
 type Product = {
   name: string
   image: string
-  price: string
+  price: number
+  originalPrice?: number
+  rating?: number
+  reviewCount?: number
+  isBestseller?: boolean
+  isVeg?: boolean
+}
+
+type AdSlide = {
+  image: string
+  eyebrow: string
+  title: string
+  description: string
 }
 
 const categories: Category[] = [
@@ -85,12 +96,43 @@ const bestSellers: Product[] = [
   {
     name: 'Simply Crispy Veg',
     image: bestSeller1,
-    price: 'XXX',
+    price: 59,
+    originalPrice: 70,
+    rating: 4.5,
+    reviewCount: 2200,
+    isBestseller: true,
+    isVeg: true,
   },
   {
     name: 'Beetroot Bliss Burger',
     image: bestSeller2,
-    price: 'XXX',
+    price: 59,
+    originalPrice: 90,
+    rating: 4.1,
+    reviewCount: 13,
+    isVeg: true,
+  },
+]
+
+const adSlides: AdSlide[] = [
+  {
+    image: aboutImage,
+    eyebrow: 'About Us',
+    title: 'Burgers & Booch',
+    description:
+      'Handcrafted burgers, bold flavours, and signature beverages made fresh every day.',
+  },
+  {
+    image: craftedBanner,
+    eyebrow: 'Limited Time',
+    title: 'Flat ₹50 Off',
+    description: 'On your first order above ₹299. Crafted burgers, real good deal.',
+  },
+  {
+    image: bestSeller1,
+    eyebrow: 'Trending Now',
+    title: 'Simply Crispy Veg',
+    description: 'Our most loved veg burger, now at ₹59 only.',
   },
 ]
 
@@ -109,11 +151,48 @@ const testimonials = [
   },
 ]
 
+function formatReviewCount(count: number) {
+  if (count >= 1000) {
+    return `${(count / 1000).toFixed(1)}K+`
+  }
+
+  return `${count}`
+}
+
+const AD_INTERVAL_MS = 4000
+
 export default function Home() {
   const navigate = useNavigate()
   const [orderType, setOrderType] = useState<'delivery' | 'pickup'>('delivery')
   const [vegOnly, setVegOnly] = useState(false)
   const [search, setSearch] = useState('')
+  const [activeAd, setActiveAd] = useState(0)
+  const adTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const startAdTimer = () => {
+    if (adTimerRef.current) {
+      clearInterval(adTimerRef.current)
+    }
+
+    adTimerRef.current = setInterval(() => {
+      setActiveAd((index) => (index + 1) % adSlides.length)
+    }, AD_INTERVAL_MS)
+  }
+
+  useEffect(() => {
+    startAdTimer()
+
+    return () => {
+      if (adTimerRef.current) {
+        clearInterval(adTimerRef.current)
+      }
+    }
+  }, [])
+
+  const handleAdDotClick = (index: number) => {
+    setActiveAd(index)
+    startAdTimer()
+  }
 
   return (
     <div className="home">
@@ -184,7 +263,7 @@ export default function Home() {
 
       <div className="home__search-row">
         <div className="home__search">
-          <Search size={13} />
+          <Search size={15} />
 
           <input
             type="text"
@@ -199,11 +278,13 @@ export default function Home() {
           className={`home__veg ${vegOnly ? 'home__veg--active' : ''
             }`}
           onClick={() => setVegOnly((value) => !value)}
+          aria-pressed={vegOnly}
         >
-          <span>
-
+          <span className="home__veg-icon">
+            <span className="home__veg-dot" />
           </span>
-          Veg
+
+          <span>Veg</span>
         </button>
       </div>
 
@@ -278,16 +359,50 @@ export default function Home() {
                   src={product.image}
                   alt={product.name}
                 />
+              </div>
 
-                <span className="home__product-veg">
-                  <Leaf size={8} fill="currentColor" />
-                </span>
+              <div className="home__product-meta">
+                {product.isVeg && (
+                  <span className="home__product-veg">
+                    <span className="home__product-veg-dot" />
+                  </span>
+                )}
+
+                <div className="home__product-badges">
+                  {product.isBestseller && (
+                    <span className="home__product-bestseller">
+                      Bestseller
+                    </span>
+                  )}
+
+                  {product.rating !== undefined && (
+                    <span className="home__product-rating">
+                      <Star size={9} fill="currentColor" />
+                      {product.rating}
+                      {product.reviewCount !== undefined && (
+                        <span>
+                          ({formatReviewCount(product.reviewCount)})
+                        </span>
+                      )}
+                    </span>
+                  )}
+                </div>
               </div>
 
               <h3>{product.name}</h3>
 
               <div className="home__product-bottom">
-                <span>₹ {product.price}</span>
+                <div className="home__product-price">
+                  {product.originalPrice !== undefined && (
+                    <span className="home__product-price-original">
+                      ₹{product.originalPrice}
+                    </span>
+                  )}
+
+                  <span className="home__product-price-current">
+                    ₹{product.price}
+                  </span>
+                </div>
 
                 <button type="button">
                   Add
@@ -298,38 +413,38 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home__about">
-        <img
-          src={aboutImage}
-          alt="Burgers and beverages"
-        />
+      <section className="home__ads">
+        <div
+          className="home__ads-track"
+          style={{ transform: `translateX(-${activeAd * 100}%)` }}
+        >
+          {adSlides.map((slide) => (
+            <div className="home__ad-slide" key={slide.title}>
+              <img
+                src={slide.image}
+                alt={slide.title}
+              />
 
-        <div className="home__about-content">
-          <h2>
-            About <span>Burgers & Booch</span>
-          </h2>
+              <div className="home__ad-overlay">
+                <span className="home__ad-eyebrow">{slide.eyebrow}</span>
+                <h2>{slide.title}</h2>
+                <p>{slide.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-          <p>
-            Handcrafted burgers, bold flavours, and signature
-            beverages made fresh every day.
-          </p>
-
-          <div className="home__about-stats">
-            <span>
-              <strong>100%</strong>
-              Fresh
-            </span>
-
-            <span>
-              <strong>Fresh</strong>
-              Ingredients
-            </span>
-
-            <span>
-              <strong>Fast</strong>
-              Delivery
-            </span>
-          </div>
+        <div className="home__ad-dots">
+          {adSlides.map((slide, index) => (
+            <button
+              type="button"
+              key={slide.title}
+              className={`home__ad-dot ${index === activeAd ? 'home__ad-dot--active' : ''
+                }`}
+              aria-label={`Go to slide ${index + 1}`}
+              onClick={() => handleAdDotClick(index)}
+            />
+          ))}
         </div>
       </section>
 
@@ -354,11 +469,11 @@ export default function Home() {
                   <strong>{testimonial.name}</strong>
 
                   <div className="home__stars">
-                    <Star size={9} fill="currentColor" />
-                    <Star size={9} fill="currentColor" />
-                    <Star size={9} fill="currentColor" />
-                    <Star size={9} fill="currentColor" />
-                    <Star size={9} fill="currentColor" />
+                    <Star size={10} fill="currentColor" />
+                    <Star size={10} fill="currentColor" />
+                    <Star size={10} fill="currentColor" />
+                    <Star size={10} fill="currentColor" />
+                    <Star size={10} fill="currentColor" />
                   </div>
                 </div>
               </div>
